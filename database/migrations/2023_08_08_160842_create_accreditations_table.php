@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('type');
             $table->integer('phase_num');
             $table->date('accredited_date');
-            $table->date('mqr_recorded_accredited_date');
-            $table->string('jpt_approval_letter_reference_number');
-            $table->string('remarks');
+            $table->date('mqr_recorded_accredited_date')->nullable();
+            $table->string('jpt_approval_letter_reference_number')->nullable();
+            $table->string('remarks')->nullable();
             $table->foreignIdFor(\App\Models\AcademicProgramme::class)->constrained();
             $table->timestamps();
             $table->softDeletes();

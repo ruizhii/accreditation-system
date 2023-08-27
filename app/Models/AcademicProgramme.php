@@ -26,6 +26,10 @@ class AcademicProgramme extends Model
         'faculty_id',
     ];
 
+    protected $nullable = [
+
+    ];
+
     public function faculty(): BelongsTo
     {
         return $this->belongsTo(Faculty::class);

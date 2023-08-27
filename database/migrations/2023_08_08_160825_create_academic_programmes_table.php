@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('graduate_level');
             $table->string('study_mode');
             $table->string('nec_2010');
-            $table->string('nec_2020');
+            $table->string('nec_2020')->nullable();
             $table->integer('min_semester');
             $table->integer('max_semester');
             $table->integer('required_graduation_credit');
