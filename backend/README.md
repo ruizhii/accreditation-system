@@ -11,7 +11,9 @@ Objective
 Contribution guide
 ----
 Do not use main branch directly, instead use branches and merge the changes in later on.
-For example to develop a new feature of accreditation form submission:
+
+### Example
+To develop a new feature of accreditation form submission:
 1. Pull latest main branch
 2. Create a new branch named feature/accreditation-form-submission based on lastest main branch
 3. Implement the feature and commit changes on the branch
@@ -19,5 +21,13 @@ For example to develop a new feature of accreditation form submission:
 5. (If needed) Have someone review the implementation or conduct discussion
 6. Merge the feature branch into main branch
 
-Commit message: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+Commit guide: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+Setup guide
+----
+1. Create a .env file, can clone from .env.example
+2. Modify the values accordingly, particularly the database info
+3. Run `composer install` to install dependencies
+4. Run `php artisan migrate` to deploy changes to database
+5. (For Laragon) Right click for context-menu and open project website from there
 
