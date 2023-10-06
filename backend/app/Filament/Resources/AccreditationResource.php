@@ -40,6 +40,8 @@ class AccreditationResource extends Resource
                     ->label('Phase number'),
                 Forms\Components\DatePicker::make('accredited_date')
                     ->required(),
+                Forms\Components\DatePicker::make('expiry_date')
+                    ->required(),
                 Forms\Components\DatePicker::make('mqr_recorded_accredited_date')
                     ->label('MQR recorded accredited date'),
                 Forms\Components\TextInput::make('jpt_approval_letter_reference_number')
@@ -63,6 +65,9 @@ class AccreditationResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('accredited_date')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('expiry_date')
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('mqr_recorded_accredited_date')
