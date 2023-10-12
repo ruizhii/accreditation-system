@@ -1,0 +1,4 @@
+{
+    "typescript.suggest.classMemberSnippets.enabled": false,
+    "typescript.suggest.objectLiteralMethodSnippets.enabled": false
+}
