@@ -21,7 +21,6 @@ class FacultyResource extends Resource
 
     public static function form(Form $form): Form
     {
-        $year = 1;
         return $form
             ->columns(4)
             ->schema([
