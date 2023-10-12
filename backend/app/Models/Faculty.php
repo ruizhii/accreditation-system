@@ -14,7 +14,29 @@ class Faculty extends Model
 
     protected $fillable = [
         'name',
-        'email',
+        'director_name',
+        'director_email',
+        'tel',
+        'fax',
+        'website',
+        'department',
+        'academic_staff',
+        'no_student',
+        'student_attrition',
+        'administrative_staff',
+        'annual_allocation',
+        'organizational_chart',
+        'programme_leader'
+    ];
+
+    protected $casts = [
+        'no_student' => 'json',
+        'annual_allocation' => 'json',
+        'department' => 'json',
+        'academic_staff' => 'json',
+        'student_attrition' => 'json',
+        'administrative_staff' => 'json',
+        'programme_leader' => 'json',
     ];
 
     public function academic_programmes(): HasMany
