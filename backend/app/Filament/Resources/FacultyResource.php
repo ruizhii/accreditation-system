@@ -25,26 +25,20 @@ class FacultyResource extends Resource
             ->columns(4)
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('director_name')
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('director_email')
                     ->email()
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('tel')
                     ->label('Faculty telephone number')
-                    ->required()
                     ->maxLength(15),
                 Forms\Components\TextInput::make('fax')
                     ->label('Faculty fax number')
-                    ->required()
                     ->maxLength(15),
                 Forms\Components\TextInput::make('website')
                     ->label('Website')
-                    ->required()
                     ->maxLength(255),
                 
                 Forms\Components\Section::make('Departments/Centres')
@@ -55,15 +49,12 @@ class FacultyResource extends Resource
                             ->statePath('department')
                             ->schema([
                                 Forms\Components\TextInput::make('name')
-                                    ->required()
                                     ->label('Name of Departments/Centres')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('location')
-                                    ->required()
                                     ->label('Location (On campus/Off campus)')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('no_programmes')
-                                    ->required()
                                     ->label('Number of Programmes Offered')
                                     ->integer()
                                     ->maxLength(255),
@@ -82,27 +73,21 @@ class FacultyResource extends Resource
                                     ->schema([
                                         Forms\Components\TextInput::make('doctoral')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('masters')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('bachelors')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('diploma')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('certificate')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('others')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),    
                                         ]),
                                 Forms\Components\Section::make('non-malaysian')
@@ -111,27 +96,21 @@ class FacultyResource extends Resource
                                     ->schema([
                                         Forms\Components\TextInput::make('doctoral')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('masters')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('bachelors')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('diploma')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('certificate')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('others')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),    
                                         ]),
                                         ]),
@@ -144,27 +123,21 @@ class FacultyResource extends Resource
                                     ->schema([
                                         Forms\Components\TextInput::make('doctoral')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('masters')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('bachelors')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('diploma')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('certificate')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('others')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),    
                                         ]),
                                 Forms\Components\Section::make('non-malaysian')
@@ -173,27 +146,21 @@ class FacultyResource extends Resource
                                     ->schema([
                                         Forms\Components\TextInput::make('doctoral')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('masters')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('bachelors')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('diploma')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('certificate')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),
                                         Forms\Components\TextInput::make('others')
                                             ->integer()
-                                            ->required()
                                             ->maxLength(5),    
                                         ]),
                                 ]),
@@ -209,32 +176,26 @@ class FacultyResource extends Resource
                     Forms\Components\TextInput::make('local_male')
                         ->label("Number of local male student")    
                         ->integer()
-                        ->required()
                         ->maxLength(6),
                     Forms\Components\TextInput::make('local_female')
                         ->label("Number of local female student")
                         ->integer()
-                        ->required()
                         ->maxLength(6),
                     Forms\Components\TextInput::make('international_male')
                         ->label("Number of international male student")
                         ->integer()
-                        ->required()
                         ->maxLength(6),
                     Forms\Components\TextInput::make('international_female')
                         ->label("Number of international female student")
                         ->integer()
-                        ->required()
                         ->maxLength(6),
                     Forms\Components\TextInput::make('disabled_male')
                         ->label("Number of disabled male student")
                         ->integer()
-                        ->required()
                         ->maxLength(6),
                     Forms\Components\TextInput::make('disabled_female')
                         ->label("Number of disabled female student")
                         ->integer()
-                        ->required()
                         ->maxLength(6),
                     ]),
                     Forms\Components\Card::make([
@@ -318,14 +279,11 @@ class FacultyResource extends Resource
                             ->statePath('student_attrition')
                             ->schema([
                                 Forms\Components\TextInput::make('year')
-                                    ->required()
                                     ->maxLength(4),
                                 Forms\Components\TextInput::make('total_student')
-                                    ->required()
                                     ->reactive()
                                     ->integer(),
                                 Forms\Components\TextInput::make('no_dropout')
-                                    ->required()
                                     ->integer(),
                                 Forms\Components\Placeholder::make('attrition_rate')
                                     ->content(function ($get) {
@@ -336,8 +294,7 @@ class FacultyResource extends Resource
                                         $attrition_rate = ($no_dropout/$total_student)*100;
                                         return $attrition_rate;
                                     }),
-                                Forms\Components\TextInput::make('leave_reason')
-                                    ->required(),   
+                                Forms\Components\TextInput::make('leave_reason'),   
                             ])
                         
                             
@@ -352,11 +309,9 @@ class FacultyResource extends Resource
                             ->statePath('administrative_staff')
                             ->schema([
                                 Forms\Components\TextInput::make('classification')
-                                    ->required()
                                     ->label('Classification by Function')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('no_staff')
-                                    ->required()
                                     ->label('Number of Administrative and Support staff')
                                     ->numeric(),
                             ])
@@ -376,35 +331,32 @@ class FacultyResource extends Resource
                             ->statePath('annual_allocation')
                             ->schema([
                                 Forms\Components\TextInput::make('year')
-                                    ->required()
                                     ->maxLength(4),
-                                Forms\Components\TextInput::make('value')
-                                    ->required(),
+                                Forms\Components\TextInput::make('value'),
                             ])
                         
                             
                     ]),
                 Forms\Components\FileUpload::make('organizational_chart')
-                ->label('Latest Faculty Organisational Chart'),
+                ->label('Latest Faculty Organisational Chart')
+                ->getUploadedFileNameForStorageUsing(
+                    fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                        ->prepend('custom-prefix-'),
+                ),
                 
                 Forms\Components\Section::make('Programme Leader')
                     ->description('Details of Programme Leader (Timbalan Dekan/Timbalan Pengarah')
                     ->statePath('programme_leader')
                     ->schema([
                         Forms\Components\TextInput::make('name_title')
-                            ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('designation')
-                            ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('tel')
-                            ->required()
                             ->maxLength(15),
                         Forms\Components\TextInput::make('fax')
-                            ->required()
                             ->maxLength(15),
                         Forms\Components\TextInput::make('email')
-                            ->required()
                             ->maxLength(255),
                     ])
 

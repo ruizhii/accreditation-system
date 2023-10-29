@@ -39,8 +39,8 @@ class Faculty extends Model
         'programme_leader' => 'json',
     ];
 
-    public function academic_programmes(): HasMany
+    public function departments(): HasMany
     {
-        return $this->hasMany(AcademicProgramme::class);
+        return $this->hasMany(Department::class);
     }
 }

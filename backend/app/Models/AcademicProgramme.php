@@ -15,28 +15,60 @@ class AcademicProgramme extends Model
 
     protected $fillable = [
         'name',
-        'graduate_level',
+        'mqf_level',
+        'mqr_no',
+        'required_graduating_credit',
+        'accredited_um',
+        'award_type',
+        'old_nec',
+        'new_nec',
+        'location_conducted',
+        'instruction_language',
+        'programme_type',
+        'programme_status',
         'study_mode',
-        'nec_2010',
-        'nec_2020',
-        'min_semester',
-        'max_semester',
-        'required_graduation_credit',
-        'degree_qualification_type',
-        'faculty_id',
+        'offer_mode',
+        'teaching_method',
+        'delivery_mode',
+        'study_duration',
+        'first_intake_date',
+        'student_enrolment',
+        'graduation_date',
+        'graduate_job_type',
+        'awarding_body',
+        'scroll_awarded',
+        'programme_coordinator',
+        'department_id',
+    ];
+
+    protected $casts = [
+        'accredited_um' => 'json',
+        'teaching_method' => 'array',
+        'delivery_mode' => 'array',
+        'student_enrolment' => 'json',
+        'graduate_job_type' => 'array',
+        'awarding_body' => 'json',
+        'scroll_awarded' => 'json',
+        'programme_coordinator' => 'json',
+        
     ];
 
     protected $nullable = [
 
     ];
 
-    public function faculty(): BelongsTo
+    public function department(): BelongsTo
     {
-        return $this->belongsTo(Faculty::class);
+        return $this->belongsTo(Department::class);
     }
 
     public function accreditations(): HasMany
     {
         return $this->hasMany(Accreditation::class);
+    }
+
+    public function programme_standards(): HasMany
+    {
+        return $this->hasMany(ProgrammeStandard::class);
     }
 }
