@@ -23,7 +23,7 @@ return new class extends Migration
             $table->json('academic_staff')->nullable();         //Total number of academic staff
             $table->json('no_student')->nullable();             //Number of student based on gender and disability
             $table->json('student_attrition')->nullable();      //Student attrition
-            $table->string('organizational_chart')->nullable(); //Faculty organizational chart(url)
+            $table->longText('organizational_chart')->nullable(); //Faculty organizational chart(url)
             $table->json('annual_allocation')->nullable();  //Annual allocation past 1,2 and 3 year
             $table->json('administrative_staff')->nullable();   //Total number of administrative and support staff
             $table->json('programme_leader')->nullable();       //Detatils of Programme Leader
