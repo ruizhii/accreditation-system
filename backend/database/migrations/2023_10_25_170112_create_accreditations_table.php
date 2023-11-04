@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('type');
             $table->integer('phase_num');
             $table->date('accredited_date');
+            $table->date('expiry_date');
             $table->date('mqr_recorded_accredited_date')->nullable();
             $table->string('jpt_approval_letter_reference_number')->nullable();
             $table->string('remarks')->nullable();

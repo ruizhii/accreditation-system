@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -40,6 +41,8 @@ class AccreditationResource extends Resource
                     ->label('Phase number'),
                 Forms\Components\DatePicker::make('accredited_date')
                     ->required(),
+                Forms\Components\DatePicker::make('expiry_date')
+                    ->required(),
                 Forms\Components\DatePicker::make('mqr_recorded_accredited_date')
                     ->label('MQR recorded accredited date'),
                 Forms\Components\TextInput::make('jpt_approval_letter_reference_number')
@@ -65,6 +68,9 @@ class AccreditationResource extends Resource
                 Tables\Columns\TextColumn::make('accredited_date')
                     ->date()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('expiry_date')
+                    ->date()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('mqr_recorded_accredited_date')
                     ->date()
                     ->sortable(),
@@ -86,6 +92,19 @@ class AccreditationResource extends Resource
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
+            ])
+            ->filters([
+                Filter::make('expiring_from')
+                ->form([
+                    Forms\Components\DatePicker::make('expiring from'),
+                ])
+                ->query(function (Builder $query, array $data): Builder {
+                    return $query
+                        ->when(
+                            $data['expiring from'],
+                            fn (Builder $query, $date): Builder => $query->whereDate('expiry_date', '>=', $date),
+                        );
+                })
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
