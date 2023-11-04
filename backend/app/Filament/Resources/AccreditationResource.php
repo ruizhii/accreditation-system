@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AccreditationResource\Pages;
-use App\Filament\Resources\AccreditationResource\RelationManagers;
 use App\Models\Accreditation;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -35,10 +34,6 @@ class AccreditationResource extends Resource
                         're_accreditation' => 'Re-accreditation',
                     ])
                     ->native(false),
-                Forms\Components\TextInput::make('phase_num')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('Phase number'),
                 Forms\Components\DatePicker::make('accredited_date')
                     ->required(),
                 Forms\Components\DatePicker::make('expiry_date')
@@ -62,9 +57,6 @@ class AccreditationResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('type')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('phase_num')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('accredited_date')
                     ->date()
                     ->sortable(),

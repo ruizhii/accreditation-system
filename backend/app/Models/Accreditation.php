@@ -14,7 +14,6 @@ class Accreditation extends Model
 
     protected $fillable = [
         'type',
-        'phase_num',
         'accredited_date',
         'mqr_recorded_accredited_date',
         'expiry_date',
