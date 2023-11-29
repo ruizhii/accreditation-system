@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'assessors' => [
+            'driver' => 'session',
+            'provider' => 'assessors',
+        ],
     ],
 
     /*
@@ -69,6 +74,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'assessors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Assessor::class,
+        ],
     ],
 
     /*
