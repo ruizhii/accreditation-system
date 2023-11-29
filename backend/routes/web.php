@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AssessorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,22 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::prefix('assessors')->group(function () {
+    Route::get('/login', [AssessorController::class, 'loginPage'])->name('assessors.login.page');
+    Route::get('/register', [AssessorController::class, 'registerPage'])->name('assessors.register.page');
+
+    Route::post('/login', [AssessorController::class, 'login'])->name('assessors.login');
+    Route::post('/register', [AssessorController::class, 'register'])->name('assessors.register');
+
+    Route::post('/logout', [AssessorController::class, 'logout'])->name('assessors.logout');
+});
+
+Route::middleware(['assessor'])->group(function () {
+    Route::prefix('assessors')->group(function () {
+        Route::get('/index', [AssessorController::class, 'index'])->name('assessors.index');
+    });
+});
+
 
 require __DIR__.'/auth.php';
