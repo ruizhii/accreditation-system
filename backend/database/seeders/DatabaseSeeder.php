@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $this->call([
+            PermissionsSeeder::class
+        ]);
         DB::table('faculties')->insert(
             array(
                 'name' => 'fsktm',
