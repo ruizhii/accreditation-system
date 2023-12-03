@@ -23,8 +23,22 @@ return new class extends Migration
 
         DB::table('users')->insert(
             array(
-                'name' => 'test',
+                'name' => 'programme leader',
                 'email' => 'test@gmail.com',
+                'password' => '$2y$10$WOFueWgZ0R92fhaNuHteqeYd.QoDTzdH1bx8IOK3aDhyTguIFDE1O'
+            )
+        );
+        DB::table('users')->insert(
+            array(
+                'name' => 'programme coordinator',
+                'email' => 'test2@gmail.com',
+                'password' => '$2y$10$WOFueWgZ0R92fhaNuHteqeYd.QoDTzdH1bx8IOK3aDhyTguIFDE1O'
+            )
+        );
+        DB::table('users')->insert(
+            array(
+                'name' => 'qmec',
+                'email' => 'test3@gmail.com',
                 'password' => '$2y$10$WOFueWgZ0R92fhaNuHteqeYd.QoDTzdH1bx8IOK3aDhyTguIFDE1O'
             )
         );
