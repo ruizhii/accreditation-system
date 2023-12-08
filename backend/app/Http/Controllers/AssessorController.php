@@ -34,6 +34,8 @@ class AssessorController extends Controller
             $user = Auth::guard('assessors')->user();
 
             if ($user && $user->status != Assessor::APPROVED_STATUS) {
+                Auth::guard('assessors')->logout();
+
                 return redirect()->route('assessors.login.page')->with('error', 'This registered user account have not approved or is rejected');
             }
 
