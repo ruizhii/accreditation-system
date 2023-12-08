@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->group(function() {
         return $request->user();
     });
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/profile', [AuthController::class, 'profile']);
     Route::apiResource('/users', UserController::class);
     Route::apiResource('/faculties', FacultyController::class);
     Route::apiResource('/departments', DepartmentController::class);

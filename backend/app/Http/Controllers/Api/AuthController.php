@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\UserResource;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
@@ -39,6 +40,16 @@ class AuthController extends Controller
         $user = Auth::user();
         $token = $user->createToken('main')->plainTextToken;
         return response(compact('user','token'));
+    }
+
+    /**
+     * Get the user's logged in profile.
+     */
+    public function profile()
+    {
+        return response()->json([
+            'user' => new UserResource(auth()->user())
+        ], 200);
     }
 
     public function logout(Request $request)
