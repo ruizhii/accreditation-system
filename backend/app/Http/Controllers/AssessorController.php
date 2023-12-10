@@ -66,7 +66,7 @@ class AssessorController extends Controller
             'status' => Assessor::REGISTERED_STATUS,
         ]);
 
-        return redirect()->route('assessors.login.page')->with('success', 'Sucessfully Registered');
+        return redirect()->route('assessors.login.page')->with('success', 'Sucessfully Registered, please wait for admin to approve your registration.');
     }
 
     public function logout()
