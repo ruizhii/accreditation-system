@@ -70,6 +70,10 @@ export default function DefaultLayout() {
              ? <Link to="/academicprogrammes">Academic Programmes</Link>
              : ""
             };
+            {can('access accreditations')
+             ? <Link to="/accreditations">Accreditations</Link>
+             : ""
+            };
             
         </aside>
       <div className="content">
