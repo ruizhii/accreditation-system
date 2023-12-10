@@ -25,21 +25,21 @@ return new class extends Migration
             array(
                 'name' => 'programme leader',
                 'email' => 'test@gmail.com',
-                'password' => '$2y$10$WOFueWgZ0R92fhaNuHteqeYd.QoDTzdH1bx8IOK3aDhyTguIFDE1O'
+                'password' => '$2y$10$XDmWmZ3/.okOggBgU4lE3uu4rDLJqIy48aiXqw0BP1rJU5O97vn1e'
             )
         );
         DB::table('users')->insert(
             array(
                 'name' => 'programme coordinator',
                 'email' => 'test2@gmail.com',
-                'password' => '$2y$10$WOFueWgZ0R92fhaNuHteqeYd.QoDTzdH1bx8IOK3aDhyTguIFDE1O'
+                'password' => '$2y$10$XDmWmZ3/.okOggBgU4lE3uu4rDLJqIy48aiXqw0BP1rJU5O97vn1e'
             )
         );
         DB::table('users')->insert(
             array(
                 'name' => 'qmec',
                 'email' => 'test3@gmail.com',
-                'password' => '$2y$10$WOFueWgZ0R92fhaNuHteqeYd.QoDTzdH1bx8IOK3aDhyTguIFDE1O'
+                'password' => '$2y$10$XDmWmZ3/.okOggBgU4lE3uu4rDLJqIy48aiXqw0BP1rJU5O97vn1e'
             )
         );
     }
