@@ -13,6 +13,8 @@ import Departments from './views/Departments'
 import DepartmentForm from './views/DepartmentForm'
 import AcademicProgrammes from './views/AcademicProgrammes'
 import AcademicProgrammeForm from './views/AcademicProgrammeForm'
+import Accreditations from './views/Accreditations'
+import AccreditationForm from './views/AccreditationForm'
 
 const router = createBrowserRouter([
   {
@@ -74,6 +76,18 @@ const router = createBrowserRouter([
       {
         path: '/academicprogrammes/:id',
         element: <AcademicProgrammeForm key="academicProgrammeUpdate"/>
+      },
+      {
+        path: '/accreditations',
+        element: <Accreditations />
+      },
+      {
+        path: '/accreditations/new',
+        element: <AccreditationForm key="accreditationCreate"/>
+      },
+      {
+        path: '/accreditations/:id',
+        element: <AccreditationForm key="accreditationUpdate"/>
       },
     ]
   },
