@@ -34,6 +34,7 @@ class AcademicProgramme extends Model
         'first_intake_date',
         'student_enrolment',
         'graduation_date',
+        'graduate_level',
         'graduate_job_type',
         'awarding_body',
         'scroll_awarded',
