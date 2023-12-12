@@ -19,6 +19,13 @@ class Accreditation extends Model
         'expiry_date',
         'jpt_approval_letter_reference_number',
         'remarks',
+        'submission_panel_due_date',
+        'panel_meeting_date',
+        'faculty_visit_date',
+        'closing_meeting_date',
+        'panel_report_qmec_date',
+        'report_mqa_date',
+        'status',
         'academic_programme_id',
     ];
 

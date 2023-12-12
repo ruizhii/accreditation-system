@@ -1,14 +1,18 @@
 import { Link, Navigate, Outlet } from 'react-router-dom';
 import { useStateContext } from '../contexts/ContextProvider';
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import axiosClient from "../axios-client.js";
 
 export default function DefaultLayout() {
   const {user,token,notification,setUser,setToken} = useStateContext()
+  const [users,setUsers] = useState({
+    name:null,
+    role:null,
+    permissions: {},
+  })
 
-  if (!token) {
-      return <Navigate to="/login" />
-  }
+  
+  
 
   const onLogout = (ev) => {
     ev.preventDefault()
@@ -34,16 +38,43 @@ export default function DefaultLayout() {
       .then(({data}) => {
         setUser(data)
       })
+    axiosClient.get('/profile')
+      .then(({data}) => {
+        setUsers(data.user)
+      })
   }
 
+  const can = (permission) => {
+  const userPermissions = users?.permissions;
+  if (Array.isArray(userPermissions)){
+    return userPermissions.find((p) => p == permission) ? true : false;
+  }}
+
+  if (!token) {
+    return <Navigate to="/login" />
+}
   return (
     <div id="defaultLayout">
         <aside>
             <Link to="/dashboard">Dashboard</Link>
             <Link to="/users">Users</Link>
-            <Link to="/faculties">Faculties</Link>
-            <Link to="/departments">Departments</Link>
-            <Link to="/academicprogrammes">Academic Programmes</Link>
+            {can('access faculties')
+             ? <Link to="/faculties">Faculties</Link>
+             : ""
+            };
+            {can('access departments')
+             ? <Link to="/departments">Departments</Link>
+             : ""
+            };
+            {can('access programmes')
+             ? <Link to="/academicprogrammes">Academic Programmes</Link>
+             : ""
+            };
+            {can('access accreditations')
+             ? <Link to="/accreditations">Accreditations</Link>
+             : ""
+            };
+            
         </aside>
       <div className="content">
         <header>
