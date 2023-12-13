@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assessors', function (Blueprint $table) {
+        Schema::create('assessor_programme_areas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('ic');
-            $table->string('institution_name');
-            $table->string('telephone_no');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('status');
+            $table->string('area');
+            $table->string('progress_percentage');
+            $table->foreignId('assessor_programme_id')->constrained('assessor_programmes');
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assessors');
+        Schema::dropIfExists('assessor_programme_areas');
     }
 };
