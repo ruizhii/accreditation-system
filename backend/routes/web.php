@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AssessorController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AssessorProgrammeController;
+use App\Http\Controllers\AssessorProgrammeSectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +43,21 @@ Route::prefix('assessors')->group(function () {
 
 Route::middleware(['assessor'])->group(function () {
     Route::prefix('assessors')->group(function () {
+        Route::get('/profile', [AssessorController::class, 'profile'])->name('assessors.profile');
+        Route::post('/profile', [AssessorController::class, 'profileUpdate'])->name('assessors.profile.update');
+
         Route::get('/index', [AssessorController::class, 'index'])->name('assessors.index');
+
+        Route::get('/reference', [AssessorController::class, 'reference'])->name('assessors.reference');
+
+        Route::get('/programme/{id}', [AssessorProgrammeController::class, 'show'])->name('assessors.programme.show');
+        Route::get('/programme/{id}/summary', [AssessorProgrammeController::class, 'summary'])->name('assessors.programme.summary');
+        Route::post('/programme/{id}', [AssessorProgrammeController::class, 'updateStatus'])->name('assessors.programme.updateStatus');
+
+        Route::get('/programme/{programme_id}/section/{id}', [AssessorProgrammeSectionController::class, 'show'])->name('assessors.programme.section.show');
+        Route::post('/programme/{programme_id}/section/{id}', [AssessorProgrammeSectionController::class, 'store'])->name('assessors.programme.section.store');
     });
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

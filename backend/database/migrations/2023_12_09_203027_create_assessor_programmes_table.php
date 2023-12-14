@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('assessor_id')->constrained('assessors');
             $table->foreignId('programme_id')->constrained('academic_programmes');
+            $table->boolean('is_completed')->default(false);
             $table->timestamps();
         });
     }

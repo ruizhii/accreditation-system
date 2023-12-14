@@ -12,7 +12,7 @@ class AssessorProgrammeSub extends Model
 
     protected $fillable = [
         'assessor_programme_section_id',
-        'title',
+        'sub',
         'standard_coppa',
         'keys_element',
         'evidence',
@@ -22,14 +22,9 @@ class AssessorProgrammeSub extends Model
         'information_request',
         'question',
         'observation',
-        'suggested_score',
-        'panel_score',
-        'commendations',
-        'affirmations',
-        'recommendations',
     ];
 
-    public function assessorProgrammeSections(): BelongsTo
+    public function assessorProgrammeSection(): BelongsTo
     {
         return $this->belongsTo(AssessorProgrammeSection::class);
     }
