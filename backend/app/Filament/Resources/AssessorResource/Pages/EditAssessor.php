@@ -27,7 +27,7 @@ class EditAssessor extends EditRecord
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
-        $assessorProgrammes = AssessorProgramme::where('assessor_id', $data['id'])->get();
+        $assessorProgrammes = AssessorProgramme::where('assessor_id', $data['id'])->where('is_completed', false)->get();
 
         $options = $assessorProgrammes->mapWithKeys(function ($assessorProgramme) {
             return [$assessorProgramme->academicProgramme->id => $assessorProgramme->academicProgramme->name];
