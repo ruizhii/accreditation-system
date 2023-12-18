@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Assessor extends Model implements Authenticatable
 {
@@ -83,5 +84,10 @@ class Assessor extends Model implements Authenticatable
     public function getRememberTokenName()
     {
         return 'remember_token';
+    }
+
+    public function assessorProgrammes(): HasMany
+    {
+        return $this->hasMany(AssessorProgramme::class);
     }
 }
