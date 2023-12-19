@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assessor;
+use App\Models\AssessorProgramme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -78,6 +79,39 @@ class AssessorController extends Controller
 
     public function index()
     {
-        return view('assessors.home');
+        $assessorProgrammes = AssessorProgramme::where('assessor_id', auth('assessors')->user()->id)->get();
+
+        return view('assessors.index', compact('assessorProgrammes'));
+    }
+
+    public function reference()
+    {
+        return view('assessors.reference');
+    }
+
+    public function profile()
+    {
+        $assessor = Assessor::find(auth('assessors')->user()->id);
+
+        return view('assessors.profile', compact('assessor'));
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $assessor = Assessor::find(auth('assessors')->user()->id);
+
+        $assessor->update([
+            'institution_name' => $request['institution_name'],
+            'telephone_no' => $request['telephone_no'],
+            'email' => $request['email'],
+        ]);
+
+        if (isset($request['password'])) {
+            $assessor->update([
+                'password' => Hash::make($request['password']),
+            ]);
+        }
+
+        return redirect()->route('assessors.profile')->with('success', 'Sucessfully updated your changes.');
     }
 }

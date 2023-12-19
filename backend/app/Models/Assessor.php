@@ -86,7 +86,7 @@ class Assessor extends Model implements Authenticatable
         return 'remember_token';
     }
 
-    public function assessorProgramme(): HasMany
+    public function assessorProgrammes(): HasMany
     {
         return $this->hasMany(AssessorProgramme::class);
     }

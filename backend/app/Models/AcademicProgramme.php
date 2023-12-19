@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AcademicProgramme extends Model
@@ -51,7 +52,7 @@ class AcademicProgramme extends Model
         'awarding_body' => 'json',
         'scroll_awarded' => 'json',
         'programme_coordinator' => 'json',
-        
+
     ];
 
     protected $nullable = [
@@ -71,5 +72,10 @@ class AcademicProgramme extends Model
     public function programme_standards(): HasMany
     {
         return $this->hasMany(ProgrammeStandard::class);
+    }
+
+    public function assessorProgramme(): HasOne
+    {
+        return $this->hasOne(AssessorProgramme::class, 'programme_id');
     }
 }

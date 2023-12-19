@@ -15,6 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('assessor_programme_area_id')->constrained('assessor_programme_areas');
             $table->string('section');
+            $table->string('title');
+            $table->string('suggested_score')->default(0);
+            $table->string('panel_score')->default(0);
+            $table->longText('commendations')->nullable();
+            $table->longText('affirmations')->nullable();
+            $table->longText('recommendations')->nullable();
             $table->timestamps();
         });
     }

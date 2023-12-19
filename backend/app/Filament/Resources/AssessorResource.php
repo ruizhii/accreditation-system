@@ -58,16 +58,18 @@ class AssessorResource extends Resource
                         'rejected' => 'Reject',
                         'approved' => 'Approve',
                     ]),
-                    // Forms\Components\Select::make('academic_programmes')
-                    // ->label('Academic Programmes')
-                    // ->options(
-                    //     AcademicProgramme::pluck('name', 'id')->toArray()
-                    // )
-                    // ->multiple()
-                    // ->placeholder('Select academic programmes')
-                    // ->hidden(
-                    //     fn (string $context): bool => $context === 'create'
-                    // ),
+                Forms\Components\Select::make('academic_programmes')
+                    ->required(fn (string $context): bool => $context === 'edit')
+                    ->label('Academic Programmes')
+                    ->options(
+                        AcademicProgramme::doesntHave('assessorProgramme')->pluck('name', 'id')->toArray()
+                    )
+                    ->multiple()
+                    ->placeholder('Select academic programmes')
+                    ->nullable()
+                    ->hidden(
+                        fn (string $context): bool => $context === 'create'
+                    ),
             ]);
     }
 
@@ -94,11 +96,11 @@ class AssessorResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ])
+            // ->bulkActions([
+            //     Tables\Actions\BulkActionGroup::make([
+            //         Tables\Actions\DeleteBulkAction::make(),
+            //     ]),
+            // ])
             ->emptyStateActions([
                 Tables\Actions\CreateAction::make(),
             ]);

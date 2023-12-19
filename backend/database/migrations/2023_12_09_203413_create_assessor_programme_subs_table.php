@@ -14,21 +14,16 @@ return new class extends Migration
         Schema::create('assessor_programme_subs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('assessor_programme_section_id')->constrained('assessor_programme_sections');
-            $table->string('title');
-            $table->string('standard_coppa');
-            $table->string('keys_element');
+            $table->string('sub');
+            $table->longText('standard_coppa');
+            $table->longText('keys_element');
             $table->longText('evidence');
             $table->string('coppa_requirement')->nullable();
             $table->string('evidence_status')->nullable();
-            $table->string('notes')->nullable();
-            $table->string('information_request')->nullable();
-            $table->string('question')->nullable();
-            $table->string('observation')->nullable();
-            $table->string('suggested_score')->nullable();
-            $table->string('panel_score')->nullable();
-            $table->longText('commendations')->nullable();
-            $table->longText('affirmations')->nullable();
-            $table->longText('recommendations')->nullable();
+            $table->longText('notes')->nullable();
+            $table->longText('information_request')->nullable();
+            $table->longText('question')->nullable();
+            $table->longText('observation')->nullable();
             $table->timestamps();
         });
     }

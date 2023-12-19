@@ -14,6 +14,12 @@ class AssessorProgrammeSection extends Model
     protected $fillable = [
         'assessor_programme_area_id',
         'section',
+        'title',
+        'suggested_score',
+        'panel_score',
+        'commendations',
+        'affirmations',
+        'recommendations',
     ];
 
     public function assessorProgrammeArea(): BelongsTo
@@ -21,7 +27,7 @@ class AssessorProgrammeSection extends Model
         return $this->belongsTo(AssessorProgrammeArea::class);
     }
 
-    public function AssessorProgrammeSub(): HasMany
+    public function assessorProgrammeSubs(): HasMany
     {
         return $this->hasMany(AssessorProgrammeSub::class);
     }
