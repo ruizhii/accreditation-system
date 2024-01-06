@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -42,5 +43,19 @@ class Faculty extends Model
     public function departments(): HasMany
     {
         return $this->hasMany(Department::class);
+    }
+
+    public function get_expired_accreditation_count_undergraduate()
+    {
+        return Faculty::whereHas('departments.academic_programmes.accreditations', function($q) {
+            $q->where('graduate_level', 'undergraduate')->where('expiry_date', '<', Carbon::now());
+        })->count();
+    }
+
+    public function get_expired_accreditation_count_postgraduate()
+    {
+        return Faculty::whereHas('departments.academic_programmes.accreditations', function($q) {
+            $q->where('graduate_level', 'postgraduate')->where('expiry_date', '<', Carbon::now());
+        })->count();
     }
 }

@@ -10,6 +10,7 @@ use Filament\Widgets\ChartWidget;
 class UndergraduateAccreditationSubmissionStatusChart extends ChartWidget
 {
     protected static ?string $heading = 'Undergraduate Accreditation Submission Status';
+    protected static ?int $sort = 1;
 
     protected function getData(): array
     {
