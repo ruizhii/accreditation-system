@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Log;
 
 class Faculty extends Model
 {
@@ -47,14 +48,14 @@ class Faculty extends Model
 
     public function get_expired_accreditation_count_undergraduate()
     {
-        return Faculty::whereHas('departments.academic_programmes.accreditations', function($q) {
+        return $this->departments()->whereHas('academic_programmes.accreditations', function($q) {
             $q->where('graduate_level', 'undergraduate')->where('expiry_date', '<', Carbon::now());
         })->count();
     }
 
     public function get_expired_accreditation_count_postgraduate()
     {
-        return Faculty::whereHas('departments.academic_programmes.accreditations', function($q) {
+        return $this->departments()->whereHas('academic_programmes.accreditations', function($q) {
             $q->where('graduate_level', 'postgraduate')->where('expiry_date', '<', Carbon::now());
         })->count();
     }
