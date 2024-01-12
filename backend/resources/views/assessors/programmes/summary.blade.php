@@ -6,7 +6,7 @@
     @include('assessors/layouts/nav')
 
     <div class="container content text-center">
-        <h3 class="text-center mb-3">Reference Page</h3>
+        <h3 class="text-center mb-3">Summary Page</h3>
         <hr>
         <table class="table">
             <thead class="thead-dark">
