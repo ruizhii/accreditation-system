@@ -26,6 +26,7 @@
                 </a>
                 <i class='fas fa-sign-out-alt'></i> <a href="#"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span style="color:black">Logout</span></a>
+                    <p>Contact us: <a href = "mailto: qmec@um.edu.my">qmec@um.edu.my</a></p>
             </p>
         </div>
     </div>
