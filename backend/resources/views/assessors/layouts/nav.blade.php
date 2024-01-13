@@ -27,6 +27,7 @@
                 @csrf
             </form>
             <p style="font-size:18px;">
+                <b>QMEC Academic Accreditation portal for Assessors</b> <br>
                 <a href="{{ route('assessors.profile') }}">
                     <i class="fa fa-user my-3" aria-hidden="true"></i> <span style="color:black">{{ auth('assessors')->user()->name }}</span><br>
                 </a>
