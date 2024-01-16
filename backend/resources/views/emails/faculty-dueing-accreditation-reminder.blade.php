@@ -30,7 +30,6 @@
     <hr>
 
     <div><strong>Quality Management and Enhancement Centre (QMEC)</strong></div>
-    <div>Pusat Pengurusan dan Penambahbaikan Kualiti (QMEC),</div>
     <div>Aras 7, Bangunan Canseleri,</div>
     <div>Universiti Malaya,</div>
     <div>50603 Kuala Lumpur,</div>
