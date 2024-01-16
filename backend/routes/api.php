@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\FacultyController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\AcademicProgrammeController;
+use App\Http\Controllers\Api\AccreditationController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('/faculties', FacultyController::class);
     Route::apiResource('/departments', DepartmentController::class);
     Route::apiResource('/academic_programmes', AcademicProgrammeController::class);
+    Route::apiResource('/accreditations', AccreditationController::class);
 });
 
 Route::post('/signup', [AuthController::class, 'signup']);

@@ -61,6 +61,7 @@ class PermissionsSeeder extends Seeder
             "create departments",
             "update departments",
             "delete departments",
+            "access programmes",
             "access accreditations",
             "create accreditations",
             "update accreditations",
@@ -82,6 +83,7 @@ class PermissionsSeeder extends Seeder
         ->givePermissionTo([
             "access accreditations",
             "update accreditations",
+            "access programmes",
         ]);
 
         // Assign roles to users (in this case for user id -> 1 & 2)

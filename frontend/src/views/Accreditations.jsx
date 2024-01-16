@@ -7,9 +7,16 @@ export default function Accreditations() {
     const [accreditations, setAccreditations] = useState([]);
     const [loading, setLoading] = useState(false);
     const {setNotification} = useStateContext()
+    const [programmes, setProgrammes] = useState([])
+    const [users,setUsers] = useState({
+      name:null,
+      role:null,
+      permissions: {},
+    })
 
     useEffect(() => {
-        getAccreditations();
+        getData();
+        getProgrammes();
       }, [])
 
       const onDeleteClick = accreditation => {
@@ -19,11 +26,11 @@ export default function Accreditations() {
         axiosClient.delete(`/accreditation/${accreditation.id}`)
       .then(() => {
         setNotification("Accreditation was successfully deleted")
-        getAccreditations()
+        getData()
       })
   } 
 
-  const getAccreditations = () => {
+  const getData = () => {
     setLoading(true)
     axiosClient.get('/accreditations')
       .then(({data}) => {
@@ -33,13 +40,35 @@ export default function Accreditations() {
       .catch(() => {
         setLoading(false)
       })
+      axiosClient.get('/profile') // Return user data to the server
+      .then(({data}) => {
+        setUsers(data.user)
+      })
   }
+
+  const getProgrammes = () => {
+    axiosClient.get('/academic_programmes')
+    .then(({data}) => {
+        setProgrammes(data.data)
+    })
+}
+
+  const can = (permission) => {
+    const userPermissions = users?.permissions;
+    if (Array.isArray(userPermissions)){
+      return userPermissions.find((p) => p == permission) ? true : false;
+    }}
+
 
   return (
     <div>
       <div style={{display: 'flex', justifyContent: 'space-between', allignItems: 'center'}}>
         <h1>Accreditations</h1>
-        <Link to="/accreditations/new" className="btn-add">Add new</Link>
+        {can('create accreditations')
+         ? <Link to="/accreditations/new" className="btn-add">Add new</Link>
+         : ""
+        }
+        
       </div>
       <div className="card animated fadeInDown">
         <table>
@@ -47,6 +76,8 @@ export default function Accreditations() {
           <tr>
             <th>ID</th>
             <th>Title</th>
+            <th>Academic Programme</th>
+            <th>Status</th>
             <th>Create Date</th>
             <th>Actions</th>
           </tr>
@@ -65,7 +96,10 @@ export default function Accreditations() {
             {accreditations.map(a => (
               <tr key={a.id}>
                 <td>{a.id}</td>
-                <td>{a.name}</td>
+                <td>{a.title}</td>
+                
+                <td>{a.academic_programme_id}</td>
+                <td>{a.status}</td>
                 <td>{a.created_at}</td>
                 <td>
                   <Link className="btn-edit" to={'/accreditations/' + a.id}>Edit</Link>
