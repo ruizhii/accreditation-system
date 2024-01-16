@@ -31,6 +31,11 @@ input {
     font-size: 14px;
     transition: all 0.3s;
 }
+
+.flex-container {
+    display: flex;
+  }
+
 div.form-row > input{
     width: 30%;
     margin-inline: 5px;
@@ -213,6 +218,56 @@ table.table_form_student > tr > td > input{
     position: relative;
     bottom: -8px;
     width: 80px;
+    height: 32px;
+    top: 5px;
+    right: -11px;
+    margin-top: -25px;
+    margin-bottom: 5px;
+    margin-right: -120px;
+    margin-left: -5px;
+    text-align: center;
+}
+
+table.table_form_intake_enrolment{
+    display: inline-flexbox;
+}
+
+table.table_form_intake_enrolment {
+    width: 95%;
+    border-spacing: 1;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+
+table.table_form_intake_enrolment > tr > th {
+    text-align: left;
+    padding: 0.5rem 0.5rem;
+    background-color: #efefef;
+    border: 1px solid;
+    text-align: center;
+    width:15%
+}
+
+table.table_form_intake_enrolment > tr > th.difRow {
+    text-align: left;
+    padding: 0.5rem 0.5rem;
+    background-color: #ffffff;
+    border: 1px solid;
+    font-weight: normal;
+}
+
+table.table_form_intake_enrolment > tr > td {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid black;
+    white-space: nowrap;
+}
+
+table.table_form_intake_enrolment > tr > td > input{
+    padding: 0.1rem;
+    position: relative;
+    bottom: -8px;
+    width: 65px;
     height: 32px;
     top: 5px;
     right: -11px;

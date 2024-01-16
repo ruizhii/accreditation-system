@@ -29,7 +29,6 @@ export default function DefaultLayout() {
 
   useEffect(( ) => {
     getUser()
-    // getAssignment()
   } , [])
 
   // Return user data to the server
@@ -50,6 +49,15 @@ export default function DefaultLayout() {
     return userPermissions.find((p) => p == permission) ? true : false;
   }}
 
+    const roles = (role) => {
+      const userRoles = users?.role;
+      if (userRoles == role){
+        return true;
+      }else{
+        return false;
+      }
+      }
+
   if (!token) {
     return <Navigate to="/login" />
 }
@@ -58,22 +66,22 @@ export default function DefaultLayout() {
         <aside>
             <Link to="/dashboard">Dashboard</Link>
             <Link to="/users">Users</Link>
-            {can('access faculties')
+            {can('access faculties')&&roles('programme_leader')
              ? <Link to="/faculties">Faculties</Link>
              : ""
-            };
+            }
             {can('access departments')
              ? <Link to="/departments">Departments</Link>
              : ""
-            };
-            {can('access programmes')
+            }
+            {can('access programmes')&&roles('programme_coordinator')
              ? <Link to="/academicprogrammes">Academic Programmes</Link>
              : ""
-            };
+            }
             {can('access accreditations')
              ? <Link to="/accreditations">Accreditations</Link>
              : ""
-            };
+            }
             
         </aside>
       <div className="content">
