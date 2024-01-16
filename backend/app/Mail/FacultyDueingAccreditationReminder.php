@@ -2,8 +2,8 @@
 
 namespace App\Mail;
 
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -13,12 +13,14 @@ class FacultyDueingAccreditationReminder extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $faculty = null;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($faculty)
     {
-        //
+        $this->faculty = $faculty;
     }
 
     /**
@@ -27,7 +29,7 @@ class FacultyDueingAccreditationReminder extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Faculty Dueing Accreditation Reminder',
+            subject: 'Expiring Accreditation',
         );
     }
 
@@ -36,8 +38,13 @@ class FacultyDueingAccreditationReminder extends Mailable
      */
     public function content(): Content
     {
+        $departments = $this->faculty->departments()->whereHas('academic_programmes.accreditations', function($q) {
+            $q->where('expiry_date', '<', Carbon::now());
+        });
+
         return new Content(
             view: 'emails.faculty-dueing-accreditation-reminder',
+            with: array($this->faculty, $departments),
         );
     }
 
