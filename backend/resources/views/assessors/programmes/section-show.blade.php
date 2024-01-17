@@ -129,7 +129,11 @@
 
                 <h5 class="ml-5">Suggested Score: {{ $assessorProgrammeSection->suggested_score }}</h5>
                 <h5 class="ml-5 mb-3">Panel Score: <input type="number" name="panel_score"
-                        value="{{ $assessorProgrammeSection->panel_score }}"></h5>
+                        min = "0"
+                        max = "3"
+                        placeholder = "Max 3"
+                        value="{{ $assessorProgrammeSection->panel_score }}">
+                </h5>
 
                 <div class="row mb-3">
                     <div class="col">
