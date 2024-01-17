@@ -18,8 +18,8 @@
         }
 
         .logo {
-            width: 100%;
-            height: 100%;
+            width: 200px;
+            height: 60px;
             margin-right: 10px;
         }
 
@@ -94,9 +94,9 @@
             </div>
             <div></div>
             <div class="text-right">
-                <h4>Quality Management and Enhancement Centre (QMEC)<br>
+                <h5>Quality Management and Enhancement Centre (QMEC)<br>
                     Assessor Login Page
-                </h4>
+                </h5>
             </div>
         </div>
     </div>
